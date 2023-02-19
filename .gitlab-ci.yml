@@ -13,6 +13,7 @@ build-job:
   stage: build
   script:
     - cd src/cat
+    - mkdir compiled-code
     - make
   artifacts:
     paths: 
