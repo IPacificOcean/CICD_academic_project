@@ -23,7 +23,7 @@ do
           rm s21_cat.txt cat.txt
 done
 
-for var in -b -e -l -n -s -t -v #-E -T --number-nonblank --number --squeeze-blank
+for var in -b -e -n -s -t -v #-E -T --number-nonblank --number --squeeze-blank
 do
   for var2 in -b -e -n -s -t -v #-E -T --number-nonblank --number --squeeze-blank
   do

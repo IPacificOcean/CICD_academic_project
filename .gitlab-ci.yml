@@ -28,8 +28,8 @@ test-job2:
     - make
     - make test
 
-# deploy-prod:
-#   stage: deploy
-#   script:
-#     - cd src/cat
-#     - make deploy
+deploy-prod:
+  stage: deploy
+  script:
+    - cd src/cat
+    - make deploy
