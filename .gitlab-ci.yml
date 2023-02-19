@@ -14,6 +14,11 @@ build-job:
   script:
     - cd src/cat
     - make
+  artifacts:
+    path: 
+      - compiled-code/
+    expire_in: 30 days
+
 
 test-style:
   stage: style
@@ -25,12 +30,18 @@ test-job2:
   stage: test
   script:
     - cd src/cat
-    - make
     - make test
+  dependencies:
+    - build
+  artifacts:
+    path:
+      - test-result/
+    expire_in: 30 days
 
 deploy-prod:
   stage: deploy
   script:
     - cd src/cat
-    - make
     - make deploy
+  dependencies:
+    - test

@@ -4,8 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void struct_init_zero(options *options)
-{
+void struct_init_zero(options *options) {
   options->opt_n = 0;
   options->opt_b = 0;
   options->opt_v = 0;
@@ -14,74 +13,55 @@ void struct_init_zero(options *options)
   options->opt_t = 0;
 }
 
-void output(options *options, char **argv)
-{
-  while (*argv != NULL)
-  {
-    if ((options->filename = fopen(*argv++, "r")) == NULL)
-    {
+void output(options *options, char **argv) {
+  while (*argv != NULL) {
+    if ((options->filename = fopen(*argv++, "r")) == NULL) {
       printf("%s\n", strerror(errno));
-    }
-    else
-    {
+    } else {
       char c;
       options->line = 1;    // counter of lines
       options->cr = 0;      // counter \n
       int smb_one_line = 0; // flag of first line smb's
       int l = 1;            // cycle Counter
-      while ((c = fgetc(options->filename)) != EOF)
-      {
+      while ((c = fgetc(options->filename)) != EOF) {
         if (c == '\n' && options->line == 1 && !smb_one_line)
           options->cr++;
-        if (options->opt_s)
-        {
+        if (options->opt_s) {
           if (c == '\n' && options->cr >= 2)
             continue;
         }
-        if (options->opt_b)
-        {
+        if (options->opt_b) {
           options->opt_n = 0;
-          if (c != '\n' && (options->cr || l == 1))
-          {
+          if (c != '\n' && (options->cr || l == 1)) {
             printf("%6d\t", l++);
           }
         }
-        if (options->opt_n)
-        {
-          if (l++ == 1 || options->cr)
-          {
+        if (options->opt_n) {
+          if (l++ == 1 || options->cr) {
             printf("%6d\t", options->line);
           }
         }
-        if (options->opt_t)
-        {
-          if (c == '\t')
-          {
+        if (options->opt_t) {
+          if (c == '\t') {
             printf("^");
             c += 64;
           }
         }
-        if (options->opt_e)
-        {
-          if (c == '\n')
-          {
+        if (options->opt_e) {
+          if (c == '\n') {
             printf("$");
           }
         }
-        if (options->opt_v)
-        {
-          if (c < 0)
-          {
+        if (options->opt_v) {
+          if (c < 0) {
             printf("M-");
             c += 128;
           }
-          if (c < 32 && c != '\t' && c != '\n')
-          {
+          if (c < 32 && c != '\t' && c != '\n') {
             printf("^");
             c += 64;
           }
-          if (c == 127)
-          {
+          if (c == 127) {
             printf("^");
             c -= 64;
           }
@@ -98,27 +78,20 @@ void output(options *options, char **argv)
   }   // while 1
 }
 
-char **parser_flags(int argc, char **argv, options *optionsF)
-{
+char **parser_flags(int argc, char **argv, options *optionsF) {
   int i = 1;
   // if (argc == i || (strlen(argv[i]) == 1 && argv[i][0] == '-')) {
   //     // exit in stdin
 
   //     } else {
-  if (argc > i)
-  {
+  if (argc > i) {
     size_t j;
     int is_text = 0;
-    while (argv[i])
-    {
-      if (is_text == 0)
-      {
-        if (argv[i][0] == '-' && argv[i][1] != '-')
-        {
-          for (j = 1; j < strlen(argv[i]); j++)
-          {
-            switch (argv[i][j])
-            {
+    while (argv[i]) {
+      if (is_text == 0) {
+        if (argv[i][0] == '-' && argv[i][1] != '-') {
+          for (j = 1; j < strlen(argv[i]); j++) {
+            switch (argv[i][j]) {
             case 's':
               optionsF->opt_s = 1;
               break;
@@ -152,21 +125,13 @@ char **parser_flags(int argc, char **argv, options *optionsF)
               break;
             } // swith
           }   // for
-        }
-        else if (strcmp(argv[i], "--number") == 0)
-        {
+        } else if (strcmp(argv[i], "--number") == 0) {
           optionsF->opt_n = 1;
-        }
-        else if (strcmp(argv[i], "--number-nonblank") == 0)
-        {
+        } else if (strcmp(argv[i], "--number-nonblank") == 0) {
           optionsF->opt_b = 1;
-        }
-        else if (strcmp(argv[i], "--squeeze-blank") == 0)
-        {
+        } else if (strcmp(argv[i], "--squeeze-blank") == 0) {
           optionsF->opt_s = 1;
-        }
-        else
-        {
+        } else {
           is_text++;
         } // if 2
       }   // if 1
@@ -195,8 +160,7 @@ char **parser_flags(int argc, char **argv, options *optionsF)
 //   }
 // }
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
   // char *fileS = "simbols.txt";
   options optionsF; // We declare a variable type of flag structure
   // write_in_file(fileS);
