@@ -22,7 +22,7 @@ check:
 	clang-format  -n -Werror s21_cat.c
 
 deploy:
-	mv s21_cat /home/a/
+	mv s21_cat /home/gitlab-runner
 	
 
 ifeq ($(shell uname -s), Darwin)
