@@ -32,7 +32,7 @@ test-job2:
     - cd src/cat
     - make test
   dependencies:
-    - build
+    - build-job
   artifacts:
     paths:
       - test-result/
@@ -44,4 +44,4 @@ deploy-prod:
     - cd src/cat
     - make deploy
   dependencies:
-    - test
+    - test-job2
