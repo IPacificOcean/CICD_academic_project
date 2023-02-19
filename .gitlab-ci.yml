@@ -18,7 +18,7 @@ test-style:
   stage: style
   script:
     - cd src/cat
-    - make chack
+    - make check
 
 test-job2:
   stage: test
