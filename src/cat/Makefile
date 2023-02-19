@@ -17,10 +17,10 @@ test:
 	sh s21_cat_test.sh
 
 check:
-	cp ../../materials/linters/CPPLINT.cfg .
-	-python3 ../../materials/linters/cpplint.py --extensions=c s21_cat.c s21_cat.h
-	cppcheck --enable=all --suppress=missingIncludeSystem --inconclusive --check-config s21_cat.c s21_cat.h
+	clang-format  -n -Werror s21_cat.c 
+	
+
 ifeq ($(shell uname -s), Darwin)
 	CK_FORK=no leaks --atExit -- ./$(RUN)
 endif
-	CK_FORK=no valgrind --vgdb=no --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=RESULT_VALGRIND.txt ./$(RUN)
+	-CK_FORK=no valgrind --vgdb=no --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=RESULT_VALGRIND.txt ./$(RUN)

@@ -19,14 +19,16 @@ void output(options *options, char **argv) {
       printf("%s\n", strerror(errno));
     } else {
       char c;
-      options->line = 1;     // counter of lines
-      options->cr = 0;       // counter \n
-      int smb_one_line = 0;  // flag of first line smb's
-      int l = 1;             // cycle Counter
+      options->line = 1;    // counter of lines
+      options->cr = 0;      // counter \n
+      int smb_one_line = 0; // flag of first line smb's
+      int l = 1;            // cycle Counter
       while ((c = fgetc(options->filename)) != EOF) {
-        if (c == '\n' && options->line == 1 && !smb_one_line) options->cr++;
+        if (c == '\n' && options->line == 1 && !smb_one_line)
+          options->cr++;
         if (options->opt_s) {
-          if (c == '\n' && options->cr >= 2) continue;
+          if (c == '\n' && options->cr >= 2)
+            continue;
         }
         if (options->opt_b) {
           options->opt_n = 0;
@@ -67,12 +69,13 @@ void output(options *options, char **argv) {
         printf("%c", c);
         options->line += (c == '\n') ? 1 : 0;
         options->cr += (c == '\n') ? 1 : 0;
-        if (c != '\n') options->cr = 0;
+        if (c != '\n')
+          options->cr = 0;
         smb_one_line = (options->line == 1 && c != '\n') ? 1 : 0;
-      }  /// while 2
+      } /// while 2
       fclose(options->filename);
-    }  // else
-  }    // while 1
+    } // else
+  }   // while 1
 }
 
 char **parser_flags(int argc, char **argv, options *optionsF) {
@@ -89,40 +92,39 @@ char **parser_flags(int argc, char **argv, options *optionsF) {
         if (argv[i][0] == '-' && argv[i][1] != '-') {
           for (j = 1; j < strlen(argv[i]); j++) {
             switch (argv[i][j]) {
-              case 's':
-                optionsF->opt_s = 1;
-                break;
-              case 'b':
-                optionsF->opt_b = 1;
-                break;
-              case 'n':
-                optionsF->opt_n = 1;
-                break;
-              case 'e':
-                optionsF->opt_e = 1;
-                optionsF->opt_v = 1;
-                break;
-              case 't':
-                optionsF->opt_t = 1;
-                optionsF->opt_v = 1;
-                break;
-              case 'v':
-                optionsF->opt_v = 1;
-                break;
-              case 'E':
-                optionsF->opt_e = 1;
-                break;
-              case 'T':
-                optionsF->opt_t = 1;
-                break;
-              default:
-                printf(
-                    "\ns21_cat: illegal option -- %c\nusage: cat [-benstuv] "
-                    "[file ...]",
-                    argv[i][j]);
-                break;
-            }  // swith
-          }    // for
+            case 's':
+              optionsF->opt_s = 1;
+              break;
+            case 'b':
+              optionsF->opt_b = 1;
+              break;
+            case 'n':
+              optionsF->opt_n = 1;
+              break;
+            case 'e':
+              optionsF->opt_e = 1;
+              optionsF->opt_v = 1;
+              break;
+            case 't':
+              optionsF->opt_t = 1;
+              optionsF->opt_v = 1;
+              break;
+            case 'v':
+              optionsF->opt_v = 1;
+              break;
+            case 'E':
+              optionsF->opt_e = 1;
+              break;
+            case 'T':
+              optionsF->opt_t = 1;
+              break;
+            default:
+              printf("\ns21_cat: illegal option -- %c\nusage: cat [-benstuv] "
+                     "[file ...]",
+                     argv[i][j]);
+              break;
+            } // swith
+          }   // for
         } else if (strcmp(argv[i], "--number") == 0) {
           optionsF->opt_n = 1;
 
@@ -134,12 +136,13 @@ char **parser_flags(int argc, char **argv, options *optionsF) {
 
         } else {
           is_text++;
-        }  // if 2
-      }    // if 1
-      if (is_text) break;
+        } // if 2
+      }   // if 1
+      if (is_text)
+        break;
       i++;
-    }  // main while argv
-  }    // if argc
+    } // main while argv
+  }   // if argc
   //    } // 1 else
   return &argv[i];
 }
@@ -162,11 +165,11 @@ char **parser_flags(int argc, char **argv, options *optionsF) {
 
 int main(int argc, char **argv) {
   // char *fileS = "simbols.txt";
-  options optionsF;  // We declare a variable type of flag structure
+  options optionsF; // We declare a variable type of flag structure
   // write_in_file(fileS);
-  struct_init_zero(&optionsF);  // Initialize the structure of zeros
+  struct_init_zero(&optionsF); // Initialize the structure of zeros
   char **filename = parser_flags(argc, argv, &optionsF);
-  output(&optionsF, filename);  // output of text files on the screen
+  output(&optionsF, filename); // output of text files on the screen
 
   return 0;
 }
