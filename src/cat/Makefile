@@ -18,7 +18,10 @@ test:
 
 check:
 	clang-format  -i  s21_cat.c 
-	clang-format  -n -Werror s21_cat.c 
+	clang-format  -n -Werror s21_cat.c
+
+deploy:
+	mv src/cat/s21_cat /home/a/
 	
 
 ifeq ($(shell uname -s), Darwin)

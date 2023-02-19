@@ -7,6 +7,7 @@ stages:
   - build
   - style
   - test
+  - deploy
 
 build-job:
   stage: build
@@ -26,7 +27,8 @@ test-job2:
     - cd src/cat
     - make test
 
-# deploy-prod:
-#   stage: deploy
-#   script:
-#     - echo "This job deploys anything from the $CI_COMMIT_BRANCH branch."
+deploy-prod:
+  stage: deploy
+  script:
+    - cd src/cat
+    - make deploy
