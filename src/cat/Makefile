@@ -26,7 +26,7 @@ check:
 ifeq ($(shell uname -s), Darwin)
 	CK_FORK=no leaks --atExit -- ./$(RUN)
 else
-	CK_FORK=no valgrind --vgdb=no --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=RESULT_VALGRIND.txt ./$(RUN)
+	-CK_FORK=no valgrind --vgdb=no --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=RESULT_VALGRIND.txt ./$(RUN)
 endif
 
 deploy:
