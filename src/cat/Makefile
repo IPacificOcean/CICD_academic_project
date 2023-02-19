@@ -14,7 +14,7 @@ rebuild:
 clean:
 	rm s21_cat a.out *.cfg log.txt
 test:
-	sh s21_cat_test.sh
+	bash s21_cat_test.sh
 
 check:
 	clang-format  -i  s21_cat.c 
