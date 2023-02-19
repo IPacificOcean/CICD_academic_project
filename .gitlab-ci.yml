@@ -13,11 +13,10 @@ build-job:
   stage: build
   script:
     - cd src/cat
-    - mkdir compiled-code
     - make
   artifacts:
     paths: 
-      - compiled-code/
+      - src/cat/compiled-code/s21_cat
     expire_in: 30 days
 
 
