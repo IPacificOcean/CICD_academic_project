@@ -17,6 +17,7 @@ test:
 	sh s21_cat_test.sh
 
 check:
+	clang-format  -i  s21_cat.c 
 	clang-format  -n -Werror s21_cat.c 
 	
 
