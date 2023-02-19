@@ -16,7 +16,7 @@ build-job:
     - make
   artifacts:
     paths: 
-      - compiled-code/
+      - src/cat/compiled-code/
     expire_in: 30 days
 
 
@@ -35,7 +35,7 @@ test-job2:
     - build-job
   artifacts:
     paths:
-      - test-result/
+      - src/cat/test-result/
     expire_in: 30 days
 
 deploy-prod:
