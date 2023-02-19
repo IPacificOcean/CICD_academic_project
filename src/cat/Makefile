@@ -14,6 +14,7 @@ rebuild:
 clean:
 	rm s21_cat a.out *.cfg log.txt
 test:
+	ls -la
 	bash s21_cat_test.sh
 
 check:
