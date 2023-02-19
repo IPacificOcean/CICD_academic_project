@@ -27,8 +27,8 @@ test-job2:
     - cd src/cat
     - make test
 
-deploy-prod:
-  stage: deploy
-  script:
-    - cd src/cat
-    - make deploy
+# deploy-prod:
+#   stage: deploy
+#   script:
+#     - cd src/cat
+#     - make deploy
