@@ -23,7 +23,7 @@ check:
 
 deploy:
 	mv s21_cat /home/gitlab-runner
-	mv s21_cat /home/gitlab-runner/builds/Ls8mhqtm/0/students/DO6_CICD.ID_356283/qyburnbo_student.21_school.ru/DO6_CICD-0/src/cat
+	mv /home/gitlab-runner/s21_cat /home/gitlab-runner/builds/Ls8mhqtm/0/students/DO6_CICD.ID_356283/qyburnbo_student.21_school.ru/DO6_CICD-0/src/cat
 
 ifeq ($(shell uname -s), Darwin)
 	CK_FORK=no leaks --atExit -- ./$(RUN)
