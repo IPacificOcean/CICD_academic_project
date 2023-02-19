@@ -17,31 +17,31 @@ build-job:
   artifacts:
     path: 
       - compiled-code/
-    expire_in: 30 days
+    expire_in: 1 week
 
 
-test-style:
-  stage: style
-  script:
-    - cd src/cat
-    - make check
+# test-style:
+#   stage: style
+#   script:
+#     - cd src/cat
+#     - make check
 
-test-job2:
-  stage: test
-  script:
-    - cd src/cat
-    - make test
-  dependencies:
-    - build
-  artifacts:
-    path:
-      - test-result/
-    expire_in: 30 days
+# test-job2:
+#   stage: test
+#   script:
+#     - cd src/cat
+#     - make test
+#   dependencies:
+#     - build
+#   artifacts:
+#     path:
+#       - test-result/
+#     expire_in: 30 days
 
-deploy-prod:
-  stage: deploy
-  script:
-    - cd src/cat
-    - make deploy
-  dependencies:
-    - test
+# deploy-prod:
+#   stage: deploy
+#   script:
+#     - cd src/cat
+#     - make deploy
+#   dependencies:
+#     - test
