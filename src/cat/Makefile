@@ -9,11 +9,11 @@ s21_cat: s21_cat.c
 	$(CC) $(CFLAGS) $^ -o $(EXE)
 	mkdir compiled-code && mv s21_cat compiled-code/s21_cat
 
-rebuild:
-	make clean; make compiled-code/s21_cat
+# rebuild:
+# 	make clean; make compiled-code/s21_cat
 
-clean:
-	rm -rf compiled-code test-results  
+# clean:
+# 	rm -rf compiled-code test-results  
 
 test:
 	ls -la
