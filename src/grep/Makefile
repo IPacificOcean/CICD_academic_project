@@ -20,6 +20,7 @@ test:
 	sh s21_grep_test.sh
 
 check:
+	clang-format  -i  s21_grep.c 
 	clang-format  -n -Werror s21_grep.c
 	cppcheck --enable=all --suppress=missingIncludeSystem --inconclusive --check-config s21_grep.c s21_grep.h
 
