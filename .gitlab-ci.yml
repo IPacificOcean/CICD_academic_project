@@ -38,10 +38,10 @@ test-job2:
       - src/cat/
     expire_in: 30 days
 
-# deploy-prod:
-#   stage: deploy
-#   script:
-#     - cd src/cat
-#     - make deploy
-#   dependencies:
-#     - test-job2
+deploy-prod:
+  stage: deploy
+  script:
+    - cd src/cat
+    - make deploy
+  dependencies:
+    - test-job2
