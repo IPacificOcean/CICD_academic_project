@@ -26,17 +26,17 @@ test-style:
     - cd src/cat
     - make check
 
-# test-job2:
-#   stage: test
-#   script:
-#     - cd src/cat
-#     - make test
-#   dependencies:
-#     - build-job
-#   artifacts:
-#     paths:
-#       - src/cat/test-result/
-#     expire_in: 30 days
+test-job2:
+  stage: test
+  script:
+    - cd src/cat
+    - make test
+  dependencies:
+    - build-job
+  artifacts:
+    paths:
+      - src/cat/
+    expire_in: 30 days
 
 # deploy-prod:
 #   stage: deploy
