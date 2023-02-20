@@ -23,11 +23,13 @@ build-job:
     expire_in: 30 days
 
 
-# test-style:
-#   stage: style
-#   script:
-#     - cd src/cat
-#     - make check
+test-style:
+  stage: style
+  script:
+    - cd src/cat
+    - make check
+    - cd ../grep
+    - make check
 
 # test-job2:
 #   stage: test

@@ -15,13 +15,20 @@ rebuild:
 clean:
 	rm -rf compiled-code test-results
 test:
+	ls -la
+	-mkdir test-results
 	sh s21_grep_test.sh
 
 check:
-	cp ../../materials/linters/CPPLINT.cfg .
-	-python3 ../../materials/linters/cpplint.py --extensions=c s21_grep.c s21_grep.h
+	clang-format  -i  s21_grep.c 
+	clang-format  -n -Werror s21_grep.c
 	cppcheck --enable=all --suppress=missingIncludeSystem --inconclusive --check-config s21_grep.c s21_grep.h
+
 ifeq ($(shell uname -s), Darwin)
-	CK_FORK=no leaks --atExit -- ./$(RUN)
+	CK_FORK=no leaks --atExit -- ./compiled-code/$(RUN)
 endif
-	CK_FORK=no valgrind --vgdb=no --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=RESULT_VALGRIND.txt ./$(RUN)
+	CK_FORK=no valgrind --vgdb=no --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=RESULT_VALGRIND.txt ./compiled-code/$(RUN)
+
+deploy:
+	mv compiled-code/s21_grep /home/gitlab-runner
+	mv /home/gitlab-runner/s21_grep /home/gitlab-runner/builds/Ls8mhqtm/0/students/DO6_CICD.ID_356283/qyburnbo_student.21_school.ru/DO6_CICD-0/src/grep/compiled-code
