@@ -31,7 +31,7 @@ test-style:
     - cd ../grep
     - make check
 
-test-job2:
+test-functional:
   stage: test
   script:
     - cd src/cat
@@ -46,13 +46,16 @@ test-job2:
       - src/grep/test-results
     expire_in: 30 days
 
-# deploy-prod:
-#   stage: deploy
-#   when: manual
-#   script:
-#     - cd src/cat
-#     - ls -la
-#     - make deploy
-#   dependencies:
-#     - test-job2
-#     - build-job
+deploy-prod:
+  stage: deploy
+  when: manual
+  script:
+    - cd src/cat
+    - ls -la
+    - make deploy
+    - cd ../grep
+    - ls -la
+    - make deploy
+  dependencies:
+    - build-job
+    - test-functional
