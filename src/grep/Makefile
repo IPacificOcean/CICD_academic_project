@@ -10,10 +10,10 @@ s21_grep: s21_grep.c
 	mkdir compiled-code && mv s21_grep compiled-code/s21_grep
 
 rebuild:
-	make clean; make s21_grep
+	make clean; make
 
 clean:
-	rm s21_grep a.out *.cfg log.txt *.dSYM
+	rm -rf compiled-code test-results
 test:
 	sh s21_grep_test.sh
 

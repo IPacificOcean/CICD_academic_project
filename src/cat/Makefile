@@ -10,7 +10,7 @@ s21_cat: s21_cat.c
 	mkdir compiled-code && mv s21_cat compiled-code/s21_cat
 
 rebuild:
-	make clean; make compiled-code/s21_cat
+	make clean; make 
 
 clean:
 	rm -rf compiled-code test-results  
