@@ -3,8 +3,9 @@
 COUNTER_SUCCESS=0
 COUNTER_FAIL=0
 DIFF_RES=""
-TEST_FILE="bytes.txt"
-echo "" > log.txt
+TEST_FILE="../bytes.txt"
+cd compiled-code
+echo "" > ../test-results/log.txt
 
 for var in -b -e -n -s -t -v #-E -T --number-nonblank --number --squeeze-blank
 do
@@ -17,7 +18,7 @@ do
             then
               (( COUNTER_SUCCESS++ ))
             else
-              echo "$TEST1" >> log.txt
+              echo "$TEST1" >> ../test-results/log.txt
               (( COUNTER_FAIL++ ))
           fi
           rm s21_cat.txt cat.txt
@@ -38,7 +39,7 @@ do
             then
               (( COUNTER_SUCCESS++ ))
             else
-              echo "$TEST1" >> log.txt
+              echo "$TEST1" >> ../test-results/log.txt
               (( COUNTER_FAIL++ ))
           fi
           rm s21_cat.txt cat.txt
@@ -63,7 +64,7 @@ do
             then
               (( COUNTER_SUCCESS++ ))
             else
-              echo "$TEST1" >> log.txt
+              echo "$TEST1" >> ../test-results/log.txt
               (( COUNTER_FAIL++ ))
           fi
           rm s21_cat.txt cat.txt
@@ -92,7 +93,7 @@ do
                 then
                   (( COUNTER_SUCCESS++ ))
                 else
-                  echo "$TEST1" >> log.txt
+                  echo "$TEST1" >> ../test-results/log.txt
                   (( COUNTER_FAIL++ ))
               fi
               rm s21_cat.txt cat.txt
@@ -106,7 +107,7 @@ done
 echo "SUCCESS: $COUNTER_SUCCESS"
 echo "FAIL: $COUNTER_FAIL"
 if [[ ${COUNTER_FAIL} != 0 ]] 
-then echo "error!!!"
+then
 exit 1
 else
 exit 0

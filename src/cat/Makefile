@@ -7,15 +7,17 @@ all: s21_cat
 
 s21_cat: s21_cat.c
 	$(CC) $(CFLAGS) $^ -o $(EXE)
+	mkdir compiled-code && mv s21_cat compiled-code/s21_cat
 
 rebuild:
-	make clean; make s21_cat
+	make clean; make compiled-code/s21_cat
 
 clean:
-	rm s21_cat  log.txt 
+	rm -rf compiled-code test-results  
 
 test:
 	ls -la
+	-mkdir test-results
 	bash s21_cat_test.sh
 
 check:
@@ -24,12 +26,12 @@ check:
 	cppcheck --enable=all --suppress=missingIncludeSystem --inconclusive --check-config s21_cat.c s21_cat.h
 
 ifeq ($(shell uname -s), Darwin)
-	CK_FORK=no leaks --atExit -- ./$(RUN)
+	CK_FORK=no leaks --atExit -- ./compiled-code/$(RUN)
 else
-	-CK_FORK=no valgrind --vgdb=no --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=RESULT_VALGRIND.txt ./$(RUN)
+	-CK_FORK=no valgrind --vgdb=no --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=test-results/RESULT_VALGRIND.txt ./compiled-code/$(RUN)
 endif
 
 
 deploy:
-	mv s21_cat /home/gitlab-runner
-	mv /home/gitlab-runner/s21_cat /home/gitlab-runner/builds/Ls8mhqtm/0/students/DO6_CICD.ID_356283/qyburnbo_student.21_school.ru/DO6_CICD-0/src/cat
+	mv compiled-code/s21_cat /home/gitlab-runner
+	mv /home/gitlab-runner/s21_cat /home/gitlab-runner/builds/Ls8mhqtm/0/students/DO6_CICD.ID_356283/qyburnbo_student.21_school.ru/DO6_CICD-0/src/cat/compiled-code
