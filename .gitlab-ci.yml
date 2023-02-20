@@ -40,6 +40,7 @@ test-job2:
 
 deploy-prod:
   stage: deploy
+  when: manual
   script:
     - cd src/cat
     - make deploy
