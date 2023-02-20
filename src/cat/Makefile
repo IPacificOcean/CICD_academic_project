@@ -33,5 +33,6 @@ endif
 
 
 deploy:
-	mv compiled-code/s21_cat /home/gitlab-runner
+	cd compiled-code
+	mv s21_cat /home/gitlab-runner
 	mv /home/gitlab-runner/s21_cat /home/gitlab-runner/builds/Ls8mhqtm/0/students/DO6_CICD.ID_356283/qyburnbo_student.21_school.ru/DO6_CICD-0/src/cat/compiled-code
