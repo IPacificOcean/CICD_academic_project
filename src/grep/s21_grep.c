@@ -9,7 +9,7 @@
 // #define D_GNU_SOURCE
 // void struct_init_zero(options *options) { options = {0}; }
 
-void parser_flags(int argc, char **argv, options *optionsF) {
+void parser_flags(int argc, char **argv, options *optionsF  ) {
   if (argc > 2) {
     int i;
     int flagP = 0;

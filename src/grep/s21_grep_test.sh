@@ -106,3 +106,12 @@ done
 
 echo "SUCCESS: $COUNTER_SUCCESS"
 echo "FAIL: $COUNTER_FAIL"
+
+echo "SUCCESS: $COUNTER_SUCCESS"
+echo "FAIL: $COUNTER_FAIL"
+if [[ ${COUNTER_FAIL} != 0 ]] 
+then
+exit 1
+else
+exit 0
+fi
