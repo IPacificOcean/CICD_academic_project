@@ -59,3 +59,4 @@ deploy-prod:
   dependencies:
     - build-job
     - test-functional
+    
