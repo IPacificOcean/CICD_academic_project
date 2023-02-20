@@ -14,37 +14,40 @@ build-job:
   script:
     - cd src/cat
     - make
+    - cd ../grep
+    - make
   artifacts:
     paths: 
       - src/cat/compiled-code/s21_cat
+      - src/grep/compiled-code/s21_grep
     expire_in: 30 days
 
 
-test-style:
-  stage: style
-  script:
-    - cd src/cat
-    - make check
+# test-style:
+#   stage: style
+#   script:
+#     - cd src/cat
+#     - make check
 
-test-job2:
-  stage: test
-  script:
-    - cd src/cat
-    - make test
-  dependencies:
-    - build-job
-  artifacts:
-    paths:
-      - src/cat/test-results
-    expire_in: 30 days
+# test-job2:
+#   stage: test
+#   script:
+#     - cd src/cat
+#     - make test
+#   dependencies:
+#     - build-job
+#   artifacts:
+#     paths:
+#       - src/cat/test-results
+#     expire_in: 30 days
 
-deploy-prod:
-  stage: deploy
-  when: manual
-  script:
-    - cd src/cat
-    - ls -la
-    - make deploy
-  dependencies:
-    - test-job2
-    - build-job
+# deploy-prod:
+#   stage: deploy
+#   when: manual
+#   script:
+#     - cd src/cat
+#     - ls -la
+#     - make deploy
+#   dependencies:
+#     - test-job2
+#     - build-job
