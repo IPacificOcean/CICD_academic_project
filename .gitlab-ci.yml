@@ -47,3 +47,4 @@ deploy-prod:
     - make deploy
   dependencies:
     - test-job2
+    - build-job
