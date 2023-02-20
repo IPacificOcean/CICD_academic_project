@@ -31,17 +31,20 @@ test-style:
     - cd ../grep
     - make check
 
-# test-job2:
-#   stage: test
-#   script:
-#     - cd src/cat
-#     - make test
-#   dependencies:
-#     - build-job
-#   artifacts:
-#     paths:
-#       - src/cat/test-results
-#     expire_in: 30 days
+test-job2:
+  stage: test
+  script:
+    - cd src/cat
+    - make test
+    - cd ../grep
+    - make test
+  dependencies:
+    - build-job
+  artifacts:
+    paths:
+      - src/cat/test-results
+      - src/grep/test-results
+    expire_in: 30 days
 
 # deploy-prod:
 #   stage: deploy
