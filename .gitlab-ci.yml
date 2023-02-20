@@ -43,6 +43,7 @@ deploy-prod:
   when: manual
   script:
     - cd src/cat
+    - ls -la
     - make deploy
   dependencies:
     - test-job2
