@@ -1,8 +1,6 @@
 default:
   tags: [latest]
    
-
-
 stages:
   - build
   - style

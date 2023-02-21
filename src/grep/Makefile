@@ -18,7 +18,6 @@ test:
 	ls -la
 	-mkdir test-results
 	bash s21_grep_test.sh
-	
 
 check:
 	clang-format  -i  s21_grep.c 
@@ -29,7 +28,3 @@ ifeq ($(shell uname -s), Darwin)
 	CK_FORK=no leaks --atExit -- ./compiled-code/$(RUN)
 endif
 	CK_FORK=no valgrind --vgdb=no --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=RESULT_VALGRIND.txt ./compiled-code/$(RUN)
-
-deploy:
-	mv compiled-code/s21_grep /home/gitlab-runner
-	mv /home/gitlab-runner/s21_grep /home/gitlab-runner/builds/Ls8mhqtm/0/students/DO6_CICD.ID_356283/qyburnbo_student.21_school.ru/DO6_CICD-0/src/grep/compiled-code

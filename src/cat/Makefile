@@ -30,8 +30,3 @@ ifeq ($(shell uname -s), Darwin)
 else
 	-CK_FORK=no valgrind --vgdb=no --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=RESULT_VALGRIND.txt ./compiled-code/$(RUN)
 endif
-
-
-deploy:
-	mv compiled-code/s21_cat /home/gitlab-runner
-	mv /home/gitlab-runner/s21_cat /home/gitlab-runner/builds/Ls8mhqtm/0/students/DO6_CICD.ID_356283/qyburnbo_student.21_school.ru/DO6_CICD-0/src/cat/compiled-code
