@@ -54,6 +54,7 @@ deploy-prod:
     - cd src/cat/compiled-code
     - ls -la
     - scp s21_cat deploy@172.24.116.8:~
+    
   dependencies:
     - build-job
     
