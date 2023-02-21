@@ -50,13 +50,8 @@ deploy-prod:
   stage: deploy
   when: manual
   script:
-    - cd src/cat
     - ls -la
-    - make deploy
-    - cd ../grep
-    - ls -la
-    - make deploy
+    - bash transfer.sh
   dependencies:
     - build-job
-    - test-functional
     
