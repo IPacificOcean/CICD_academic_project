@@ -51,7 +51,6 @@ deploy-prod:
   when: manual
   script:
     - cd src
-    - ls -la
     - bash transfer.sh
   dependencies:
     - build-job
