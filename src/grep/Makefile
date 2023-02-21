@@ -18,6 +18,7 @@ test:
 	ls -la
 	-mkdir test-results
 	bash s21_grep_test.sh
+	
 
 check:
 	clang-format  -i  s21_grep.c 
