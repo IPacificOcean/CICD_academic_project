@@ -50,10 +50,9 @@ deploy-prod:
   stage: deploy
   when: manual
   script:
+    - cd src
     - ls -la
-    - cd src/cat/compiled-code
-    - ls -la
-    - scp s21_cat deploy@172.24.116.8:~
+    - bash transfer.sh
   dependencies:
     - build-job
     
