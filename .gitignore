@@ -53,3 +53,4 @@ dkms.conf
 src/cat/log.txt
 src/cat/s21_cat
 .gitlab-ci.yml
+src/.DS_Store

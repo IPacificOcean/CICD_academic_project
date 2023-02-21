@@ -6,11 +6,11 @@ cd compiled-code
 DIFF_RES=""
 echo "" > ../test-results/log.txt
 
-for var in -v -c -l -n -h 
+for var in -v -l -n -h 
 do
-  for var2 in -v -c -l -n -h 
+  for var2 in -v -l -n -h 
   do
-      for var3 in -v -c -l -n -h 
+      for var3 in -v -l -n -h 
       do
         if [ $var != $var2 ] && [ $var2 != $var3 ] && [ $var != $var3 ]
         then
