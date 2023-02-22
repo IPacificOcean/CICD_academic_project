@@ -20,6 +20,7 @@ build-job:
       - src/grep/compiled-code/s21_grep
     expire_in: 30 days
   after_script:
+    - cd src
     - ls -la
     - bash telegram_bot.sh Build
 
@@ -32,7 +33,7 @@ test-style:
     - cd ../grep
     - make check
   after_script:
-    - cd ../../
+    - cd src
     - ls -la
     - bash telegram_bot.sh Style
 
@@ -51,7 +52,7 @@ test-functional:
       - src/grep/test-results
     expire_in: 30 days
   after_script:
-    - cd ../../../
+    - cd src
     - ls -la
     - bash telegram_bot.sh TestFunction
 
@@ -64,7 +65,7 @@ deploy-prod:
   dependencies:
     - build-job
   after_script:
-    - cd ..
+    - cd src
     - ls -la
     - bash telegram_bot.sh Deploy
     
