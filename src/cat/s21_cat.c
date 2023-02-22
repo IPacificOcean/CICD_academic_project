@@ -11,7 +11,7 @@ void struct_init_zero(options *options)
   options->opt_v = 0;
   options->opt_e = 0;
   options->opt_s = 0;
-  options->opt_t = 0;
+  options->opt_t =   0;
 }
 
 void output(options *options, char **argv)
