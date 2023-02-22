@@ -19,6 +19,8 @@ build-job:
       - src/cat/compiled-code/s21_cat
       - src/grep/compiled-code/s21_grep
     expire_in: 30 days
+  after_script:
+    - bash telegram_bot.sh Build
 
 
 test-style:
@@ -28,6 +30,8 @@ test-style:
     - make check
     - cd ../grep
     - make check
+  after_script:
+    - bash telegram_bot.sh Style
 
 test-functional:
   stage: test
@@ -43,6 +47,8 @@ test-functional:
       - src/cat/test-results
       - src/grep/test-results
     expire_in: 30 days
+  after_script:
+    - bash telegram_bot.sh TestFunction
 
 deploy-prod:
   stage: deploy
@@ -52,4 +58,6 @@ deploy-prod:
     - bash transfer.sh
   dependencies:
     - build-job
+  after_script:
+    - bash telegram_bot.sh Deploy
     
