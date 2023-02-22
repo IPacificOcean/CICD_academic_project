@@ -20,7 +20,6 @@ build-job:
       - src/grep/compiled-code/s21_grep
     expire_in: 30 days
   after_script:
-    - cd ../../
     - ls -la
     - bash telegram_bot.sh Build
 
