@@ -21,6 +21,7 @@ build-job:
     expire_in: 30 days
   after_script:
     - cd ../../
+    - ls -la
     - bash telegram_bot.sh Build
 
 
@@ -33,6 +34,7 @@ test-style:
     - make check
   after_script:
     - cd ../../
+    - ls -la
     - bash telegram_bot.sh Style
 
 test-functional:
@@ -51,6 +53,7 @@ test-functional:
     expire_in: 30 days
   after_script:
     - cd ../../../
+    - ls -la
     - bash telegram_bot.sh TestFunction
 
 deploy-prod:
@@ -63,5 +66,6 @@ deploy-prod:
     - build-job
   after_script:
     - cd ..
+    - ls -la
     - bash telegram_bot.sh Deploy
     
