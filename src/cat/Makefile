@@ -16,11 +16,11 @@ clean:
 	rm -rf compiled-code test-results  
 
 test:
-	ls -la
 	-mkdir test-results
 	bash s21_cat_test.sh
 
 check:
+	clang-format  -i  s21_cat.c 
 	clang-format  -n -Werror s21_cat.c
 	cppcheck --enable=all --suppress=missingIncludeSystem --inconclusive --check-config s21_cat.c s21_cat.h
 

@@ -15,7 +15,6 @@ rebuild:
 clean:
 	rm -rf compiled-code test-results
 test:
-	ls -la
 	-mkdir test-results
 	bash s21_grep_test.sh
 
